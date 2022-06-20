@@ -72,14 +72,14 @@ def init():
     #     # [-0.5, 0.5, -.50,   0.0, 0.7, 0.2,   0.0, 1.0],
 
     # ], dtype=np.float32)
-    wav = Wavefront("airplane.obj", collect_faces=True , create_materials=True)
+    wav = Wavefront("resourses/airplane.obj", collect_faces=True , create_materials=True)
     for name,material in wav.materials.items():
         print(material.vertex_format)
         print(material.vertex_format)
     
         vertexes = np.array(material.vertices,dtype=np.float32)
         break
-    wav2 = Wavefront("ground.obj", collect_faces=True)
+    wav2 = Wavefront("resourses/ground.obj", collect_faces=True)
     for name,material in wav2.materials.items():
         # print(material.vertex_format)
         ground = np.array(material.vertices,dtype=np.float32)
@@ -143,8 +143,8 @@ def init():
     glEnableVertexAttribArray(position_location)
 
     texture = glGenTextures(2)
-    txloader("color.png", texture[0])
-    txloader("gorund.png", texture[1])
+    txloader("images/color.png", texture[0])
+    txloader("images/gorund.png", texture[1])
 
     glGenerateMipmap(GL_TEXTURE_2D)
 
