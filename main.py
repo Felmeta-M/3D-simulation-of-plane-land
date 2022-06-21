@@ -1,4 +1,5 @@
 
+from re import I
 import pygame
 from OpenGL.GL import *
 from pygame.locals import *
@@ -144,7 +145,7 @@ def init():
 
     texture = glGenTextures(2)
     txloader("images/color.png", texture[0])
-    txloader("images/gorund.png", texture[1])
+    txloader("images/ground.jpg", texture[1])
 
     glGenerateMipmap(GL_TEXTURE_2D)
 
@@ -156,6 +157,8 @@ def init():
     glBindVertexArray(0)
 
     # glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
+
+
 
 i=0
 def draw():
@@ -169,10 +172,10 @@ def draw():
     print(tran)
     glUniformMatrix4fv(view_loc, 1, GL_FALSE, proj)
     view_loc = glGetUniformLocation(program, "transform")
-    tran = pyrr.matrix44.create_from_translation([0,i,0])
+    tran = pyrr.matrix44.create_from_translation([0,I,0])
     glUniformMatrix4fv(view_loc, 1, GL_TRUE, tran)
     i+=2
-
+ 
 
     glBindVertexArray(vao[1])
     glBindTexture(GL_TEXTURE_2D, texture[1])
